@@ -13,16 +13,51 @@
     <h1>Vue.set 全局操作</h1>
     <hr>
     <div id="app">
-        {{message}}
+        {{ count }}
+        <ul>
+            <li v-for="item in arr">{{ item }}</li>
+        </ul>
     </div>
 
+    <p>
+        <button onclick="add()">ADD</button>
+    </p>
 
+    <div id="div">123</div>
     <script type="text/javascript">
+        const div = document.querySelector('#div');
+
+        div.addEventListener('click', function () {
+            alert(1)
+        })
+        div.addEventListener('click', function (event) {
+            console.log(event)
+
+            alert(2)
+            event.stopImmediatePropagation()
+        })
+        div.addEventListener('click', function () {
+            alert(3)
+        })
+
+
+        function add() {
+            // Vue.set(outData, 'count', 2);
+            // app.count++;
+            // outData.count++;
+            // app.arr[1] = 'ddd';
+            Vue.set(app.arr, 1, 'dd')
+        }
+
+        const outData = {
+            count: 1,
+            // goods: 'car'
+            arr: ['aaa', 'bbb', 'ccc']
+        }
+
         var app = new Vue({
             el: '#app',
-            data: {
-                message: 'hello world!'
-            }
+            data: outData
         })
     </script>
 </body>
