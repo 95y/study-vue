@@ -23,30 +23,13 @@
         <button onclick="add()">ADD</button>
     </p>
 
-    <div id="div">123</div>
     <script type="text/javascript">
-        const div = document.querySelector('#div');
-
-        div.addEventListener('click', function () {
-            alert(1)
-        })
-        div.addEventListener('click', function (event) {
-            console.log(event)
-
-            alert(2)
-            event.stopImmediatePropagation()
-        })
-        div.addEventListener('click', function () {
-            alert(3)
-        })
-
-
         function add() {
             // Vue.set(outData, 'count', 2);
             // app.count++;
             // outData.count++;
             // app.arr[1] = 'ddd';
-            Vue.set(app.arr, 1, 'dd')
+            Vue.set(app.arr, 0, 'dd')
         }
 
         const outData = {
