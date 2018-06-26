@@ -24,6 +24,49 @@ function sortByKey(array, key) {
         在第一次DOM时进行渲染，渲染完成后视为静态内容，跳出以后的渲染过程。
 */
 
+// 生命钩子
+var app = new Vue({
+    el: '#app',
+    data: {
+        count: 1
+    },
+    methods: {
+        add() {
+            this.count++;
+        }
+    },
+    beforeCreate() {
+        console.log('1-beforeCreate 初始化之前');
+    },
+    created() {
+        console.log('2-created 创建完成');
+    },
+    beforeMount() {
+        console.log('3-beforeMount 挂载之前');
+    },
+    mounted() {
+        console.log('4-mounted 被挂载之后');
+    },
+    beforeUpdate() {
+        console.log('5-beforeUpdate 数据更新前');
+    },
+    updated() {
+        console.log('6-updated 被更新后');
+    },
+    activated() {
+        console.log('7-activated');
+    },
+    deactivated() {
+        console.log('8-deactivated');
+    },
+    beforeDestroy() {
+        console.log('9-beforeDestroy 销毁之前');
+    },
+    destroyed() {
+        console.log('10-destroyed 销毁之后');
+    }
+})
+
 ```
 
 
