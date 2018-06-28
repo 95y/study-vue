@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>computed option</h1>
+    <hr>
+    <div id="app">
+        <p>{{ newPrice }}</p>
+        <ul>
+            <li v-for="item in reversNews" :key="item.id">
+                {{ item.title }} - {{ item.date }}
+            </li>
+        </ul>
+    </div>
+
+
+    <script type="text/javascript">
+        const newsList = [{
+                title: '二论学习习近平青年工作思想 奋斗是青春最高礼赞',
+                date: '2018/6/24'
+            },
+            {
+                title: '习近平的这封信引发共鸣',
+                date: '2018/6/25'
+            },
+            {
+                title: '【央视快评】做有信仰有情怀有担当的文艺工作者',
+                date: '2018/6/25'
+            },
+            {
+                title: '不忘跟党初心 牢记青春使命',
+                date: '2018/6/28'
+            },
+        ]
+        var app = new Vue({
+            el: '#app',
+            data: {
+                price: 100,
+                newsList: newsList
+            },
+            computed: {
+                newPrice() {
+                    return this.price = `￥${this.price}元`;
+                },
+                reversNews() {
+                    return this.newsList.reverse();
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

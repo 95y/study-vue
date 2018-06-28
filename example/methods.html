@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods Option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>methods Option</h1>
+    <hr>
+    <div id="app">
+        <p>{{ count }}</p>
+        <p>
+            <button @click="add(2, $event)">ADD</button>
+        </p>
+        <p>
+            <btn @click.native="add(2, $event)"></btn>
+        </p>
+    </div>
+    <button onclick="app.add(3)">外部ADD</button>
+
+
+    <script type="text/javascript">
+        const btn = {
+            template: `<button>组件ADD</button>`
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                count: 1
+            },
+            components: {
+                btn
+            },
+            methods: {
+                add(num, event) {
+                    if (num != '') {
+                        this.count += num;
+                    } else {
+                        this.count++;
+                    }
+                    console.log(event)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
