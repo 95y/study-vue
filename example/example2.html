@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example Methods Demo</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>example Methods Demo</h1>
+    <hr>
+    <div id="app"></div>
+
+    <p>
+        <button onclick="destroy()">卸载</button>
+    </p>
+    <p>
+        <button onclick="reload()">刷新</button>
+    </p>
+    <p>
+        <button onclick="tick()">更改数据</button>
+    </p>
+
+
+    <script type="text/javascript">
+        const laTiao = Vue.extend({
+            template: '<p>{{ message }}</p>',
+            data() {
+                return {
+                    message: 'Hello, i am laTiao!'
+                }
+            },
+            methods: {
+                conFun() {
+                    console.log('mounted 被创建了!');
+                }
+            },
+            mounted() {
+                this.conFun();
+            },
+            destroyed() {
+                console.log('destroy 销毁之后');
+            },
+            updated() {
+                console.log('updated 更新之后');
+            },
+        })
+
+        const vm = new laTiao().$mount('#app');
+
+        var destroy = () => { // 销毁 $destroy
+            vm.$destroy();
+        }
+
+        var reload = () => { // 更新 $forceUpdate
+            vm.$forceUpdate();
+        }
+
+        var tick = () => {
+            vm.message = 'update message info';
+            vm.$nextTick(() => {
+                console.log('message 更新完后我被调用了');
+            })
+        }
+    </script>
+</body>
+
+</html>
